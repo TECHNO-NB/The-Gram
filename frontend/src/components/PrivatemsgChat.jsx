@@ -46,12 +46,11 @@ const PrivatemsgChat = () => {
 
   useEffect(() => {
     const storedMessages = localStorage.getItem("messages");
-    console.log(storedMessages)
+    console.log(storedMessages);
     if (storedMessages) {
       setMessages(JSON.parse(storedMessages));
     }
-
- }, [setMessage]);
+  }, [setMessage]);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -77,15 +76,22 @@ const PrivatemsgChat = () => {
       localStorage.setItem("messages", JSON.stringify(updatedMessages));
     }
   };
+  const deleteMsg=()=>{
+ localStorage.clear("messages")
+  }
 
   return (
     <div className="chat-container">
+    <button onClick={()=>{
+     deleteMsg()
+    }}>Delete</button>
       <div className="chat-messages">
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`message ${message.sender === "user" ? "user" : "other"
-              }`}
+            className={`message ${
+              message.sender === "user" ? "user" : "other"
+            }`}
           >
             {message.text}
           </div>
