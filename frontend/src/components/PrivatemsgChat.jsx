@@ -14,7 +14,7 @@ const PrivatemsgChat = () => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("*", {
+    const newSocket = io("/", {
       query: {
         userId: userId,
       },
