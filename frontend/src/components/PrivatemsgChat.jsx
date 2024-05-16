@@ -78,11 +78,13 @@ const PrivatemsgChat = () => {
   };
   const deleteMsg=()=>{
  localStorage.clear("messages")
+ window.location.reload();
   }
 
   return (
     <div className="chat-container">
-    <button onClick={()=>{
+    <button style={{background:"red", width:'2em',marginTop:"5px"}} onClick={()=>{
+
      deleteMsg()
     }}>Delete</button>
       <div className="chat-messages">
