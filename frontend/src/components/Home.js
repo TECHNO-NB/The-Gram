@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { io } from "socket.io-client";
-import { LoginContext } from "../context/LoginContext";
+import { useSocket } from "../context/SocketContext";
 
 export default function Home() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const { socket, messages, setMessages } = useSocket();
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
   const [item, setItem] = useState([]);
@@ -18,15 +18,11 @@ export default function Home() {
   const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
-  const { message, setMessage } = useContext(LoginContext);
-
   useEffect(() => {
-    if (message === true) {
+    if (messages) {
       notifyB("Message Received");
-      setMessage(false);
     }
-  }, [message]);
-  
+  }, [messages]);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
