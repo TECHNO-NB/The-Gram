@@ -31,10 +31,12 @@ mongoose.connect(mongoUrl);
 
 mongoose.connection.on("connected", () => {
   console.log("successfully connected to mongo");
+  console.log("new added")
 });
 
 mongoose.connection.on("error", () => {
   console.log("Not connected to mongo");
+
 });
 
 //serving the frontend
