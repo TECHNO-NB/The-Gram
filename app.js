@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
 
   socket.on("sendmsg", (msg) => {
     const recipentId = msg.user;
-    io.to(recipentId).emit("servermsg", msg.message);
+    io.emit("servermsg", msg.message);
     socket.emit("servermsg", msg.message);
   });
 });
