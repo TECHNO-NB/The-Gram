@@ -35,7 +35,7 @@ const Privatemsg = () => {
       }}>
             {" "}
             <Link  to={`/privatechat/${val.postedBy._id}`}>
-              {val.postedBy.name}{" "}
+              Messgae 
             </Link>{" "}
           </h1>
         );
